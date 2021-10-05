@@ -41,7 +41,7 @@ Add PharmCRM2: Goods's URL patterns:
 
     urlpatterns = [
         ...
-        path('goods/', include("goods.urls", namespace="goods")),
+        path("goods/", include("goods.urls", namespace="goods")),
         ...
     ]
 
