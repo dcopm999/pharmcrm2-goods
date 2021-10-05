@@ -1,0 +1,4 @@
+# Additional requirements go here
+django-mptt==0.13.4
+sorl-thumbnail==12.7.0
+pillow==8.3.2
