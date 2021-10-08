@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "drf_yasg",
     "rest_framework",
+    "reversion",
+    "drf_yasg",
     "goods",
     "mptt",
     # if your app has other dependencies that need to be added to the site

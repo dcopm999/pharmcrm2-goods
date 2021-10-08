@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
+from reversion.admin import VersionAdmin
 from sorl.thumbnail.admin import AdminImageMixin
 
 from goods import models
@@ -11,7 +12,7 @@ class PharmProductImageInline(AdminImageMixin, admin.TabularInline):
 
 
 @admin.register(models.TradeName)
-class TrandeNameAdmin(admin.ModelAdmin):
+class TrandeNameAdmin(VersionAdmin):
     list_display = [
         "name",
     ]
@@ -19,7 +20,7 @@ class TrandeNameAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Maker)
-class MakerAdmin(admin.ModelAdmin):
+class MakerAdmin(VersionAdmin):
     list_display = [
         "name",
     ]
@@ -27,7 +28,7 @@ class MakerAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Packing)
-class PackingAdmin(admin.ModelAdmin):
+class PackingAdmin(VersionAdmin):
     list_display = [
         "name",
     ]
@@ -35,19 +36,19 @@ class PackingAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.OriginalPacking)
-class OriginalPackingAdmin(admin.ModelAdmin):
+class OriginalPackingAdmin(VersionAdmin):
     list_display = ["packing", "quantity", "unit"]
     search_fields = ["name"]
     autocomplete_fields = ["unit"]
 
 
 @admin.register(models.DosagePacking)
-class DosagePackingAdmin(admin.ModelAdmin):
+class DosagePackingAdmin(VersionAdmin):
     list_display = ["packing", "quantity", "unit"]
 
 
 @admin.register(models.Unit)
-class UnitAdmin(admin.ModelAdmin):
+class UnitAdmin(VersionAdmin):
     list_display = [
         "name",
     ]
@@ -55,7 +56,7 @@ class UnitAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Catalog)
-class CatalogAdmin(MPTTModelAdmin):
+class CatalogAdmin(VersionAdmin, MPTTModelAdmin):
     list_display = ["name", "updated", "created"]
     search_fields = ["name"]
     search_fields = [
@@ -64,7 +65,7 @@ class CatalogAdmin(MPTTModelAdmin):
 
 
 @admin.register(models.PharmProduct)
-class PharmProductAdmin(admin.ModelAdmin):
+class PharmProductAdmin(VersionAdmin):
     inlines = [
         PharmProductImageInline,
     ]
