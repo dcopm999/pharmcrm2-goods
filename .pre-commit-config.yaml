@@ -33,10 +33,13 @@ repos:
       - id: mypy
         exclude: ^docs/conf.py
         additional_dependencies: [
+            djangorestframework,
             djangorestframework-stubs,
             django-stubs,
-	    django-mptt,
-	    sorl-thumbnail,
+	    python-slugify,
+            django-mptt,
+            sorl-thumbnail,
+	    drf-yasg,
           ]
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:

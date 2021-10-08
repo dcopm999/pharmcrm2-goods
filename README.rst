@@ -31,6 +31,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
+	"rest_framework",
         "goods",
         ...
     )
@@ -41,7 +42,8 @@ Add PharmCRM2: Goods's URL patterns:
 
     urlpatterns = [
         ...
-        path('goods/', include("goods.urls", namespace="goods")),
+        path("goods/", include("goods.urls", namespace="goods")),
+	path("api/", include("goods.api.urls", namespace="goods-api")),
         ...
     ]
 
