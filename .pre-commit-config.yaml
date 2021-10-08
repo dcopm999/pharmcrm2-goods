@@ -39,6 +39,7 @@ repos:
 	    python-slugify,
             django-mptt,
             sorl-thumbnail,
+	    drf-yasg,
           ]
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
