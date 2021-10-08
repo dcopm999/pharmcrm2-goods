@@ -32,7 +32,9 @@ Add it to your `INSTALLED_APPS`:
     INSTALLED_APPS = (
         ...
 	"rest_framework",
+	"reversion",
         "goods",
+	"mptt",
         ...
     )
 

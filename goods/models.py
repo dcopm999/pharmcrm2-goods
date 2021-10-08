@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
+import reversion
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -8,6 +8,7 @@ from slugify import slugify
 from sorl.thumbnail import ImageField
 
 
+@reversion.register()
 class TradeName(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
     slug = models.SlugField(editable=False, verbose_name=_("slug"))
@@ -29,6 +30,7 @@ class TradeName(models.Model):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class Maker(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
     slug = models.SlugField(editable=False, verbose_name=_("slug"))
@@ -50,6 +52,7 @@ class Maker(models.Model):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class Packing(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
     slug = models.SlugField(editable=False, verbose_name=_("slug"))
@@ -71,6 +74,7 @@ class Packing(models.Model):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class Unit(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
     slug = models.SlugField(editable=False, verbose_name=_("slug"))
@@ -92,15 +96,16 @@ class Unit(models.Model):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class OriginalPacking(models.Model):
     packing = models.ForeignKey(
-        Packing, on_delete=models.CASCADE, verbose_name=_("Packing type")
+        Packing, on_delete=models.PROTECT, verbose_name=_("Packing type")
     )
     quantity = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name=_("Quantity")
     )
     unit = models.ForeignKey(
-        Unit, on_delete=models.CASCADE, verbose_name=_("Unit of measurement")
+        Unit, on_delete=models.PROTECT, verbose_name=_("Unit of measurement")
     )
     slug = models.SlugField(
         max_length=250, blank=True, editable=False, verbose_name=_("slug")
@@ -118,15 +123,16 @@ class OriginalPacking(models.Model):
         verbose_name_plural = _("Original Packings")
 
 
+@reversion.register()
 class DosagePacking(models.Model):
     packing = models.ForeignKey(
-        Packing, on_delete=models.CASCADE, verbose_name=_("Packing type")
+        Packing, on_delete=models.PROTECT, verbose_name=_("Packing type")
     )
     quantity = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name=_("Quantity")
     )
     unit = models.ForeignKey(
-        Unit, on_delete=models.CASCADE, verbose_name=_("Unit of measurement")
+        Unit, on_delete=models.PROTECT, verbose_name=_("Unit of measurement")
     )
     slug = models.SlugField(
         max_length=250, blank=True, editable=False, verbose_name=_("slug")
@@ -145,6 +151,7 @@ class DosagePacking(models.Model):
         verbose_name_plural = _("Dosage packings")
 
 
+@reversion.register()
 class Catalog(MPTTModel):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
     parent = TreeForeignKey(
@@ -176,19 +183,20 @@ class Catalog(MPTTModel):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class PharmProduct(models.Model):
     trade_name = models.ForeignKey(
-        TradeName, on_delete=models.CASCADE, verbose_name=_("Trade name")
+        TradeName, on_delete=models.PROTECT, verbose_name=_("Trade name")
     )
-    maker = models.ForeignKey(Maker, on_delete=models.CASCADE, verbose_name=_("Maker"))
+    maker = models.ForeignKey(Maker, on_delete=models.PROTECT, verbose_name=_("Maker"))
     original_packing = models.ForeignKey(
-        OriginalPacking, on_delete=models.CASCADE, verbose_name=_("Original packing")
+        OriginalPacking, on_delete=models.PROTECT, verbose_name=_("Original packing")
     )
     dosage_packing = models.ForeignKey(
-        DosagePacking, on_delete=models.CASCADE, verbose_name=_("Dosage packing")
+        DosagePacking, on_delete=models.PROTECT, verbose_name=_("Dosage packing")
     )
     catalog = models.ForeignKey(
-        Catalog, on_delete=models.CASCADE, verbose_name="Catalog"
+        Catalog, on_delete=models.PROTECT, verbose_name="Catalog"
     )
     slug = models.SlugField(
         max_length=250, blank=True, editable=False, verbose_name=_("slug")
@@ -216,6 +224,7 @@ class PharmProduct(models.Model):
         super().save(*args, **kwargs)
 
 
+@reversion.register()
 class PharmProductImage(models.Model):
     img = ImageField(upload_to="thumbnails", verbose_name=_("Image"))
     product_parent = models.ForeignKey(
