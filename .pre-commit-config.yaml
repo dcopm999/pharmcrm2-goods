@@ -36,6 +36,7 @@ repos:
             djangorestframework,
             djangorestframework-stubs,
             django-stubs,
+	    python-slugify,
             django-mptt,
             sorl-thumbnail,
           ]

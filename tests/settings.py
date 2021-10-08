@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "goods",
+    "mptt",
     # if your app has other dependencies that need to be added to the site
     # they should be added here
 ]

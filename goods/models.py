@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 # -*- coding: utf-8 -*-
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from mptt.models import MPTTModel, TreeForeignKey
+from slugify import slugify
 from sorl.thumbnail import ImageField
 
 
