@@ -41,18 +41,14 @@ class ApiCase(APITestCase):
         self.test_packing()
         self.test_unit()
         url = reverse("goods-api:originalpacking-list")
-        response = self.client.post(
-            url, {"packing": 1, "unit": 1, "quantity": "quantity_test"}
-        )
+        response = self.client.post(url, {"packing": 1, "unit": 1, "quantity": 0.1})
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_dosage_packing(self):
         self.test_packing()
         self.test_unit()
         url = reverse("goods-api:dosagepacking-list")
-        response = self.client.post(
-            url, {"packing": 1, "unit": 1, "quantity": "quantity_test"}
-        )
+        response = self.client.post(url, {"packing": 1, "unit": 1, "quantity": 1.0})
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_pharm_product(self):

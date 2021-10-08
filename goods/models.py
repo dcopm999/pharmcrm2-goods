@@ -96,7 +96,9 @@ class OriginalPacking(models.Model):
     packing = models.ForeignKey(
         Packing, on_delete=models.CASCADE, verbose_name=_("Packing type")
     )
-    quantity = models.CharField(max_length=250, verbose_name=_("Quantity"))
+    quantity = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_("Quantity")
+    )
     unit = models.ForeignKey(
         Unit, on_delete=models.CASCADE, verbose_name=_("Unit of measurement")
     )
@@ -120,13 +122,22 @@ class DosagePacking(models.Model):
     packing = models.ForeignKey(
         Packing, on_delete=models.CASCADE, verbose_name=_("Packing type")
     )
-    quantity = models.CharField(max_length=250, verbose_name=_("Quantity"))
+    quantity = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_("Quantity")
+    )
     unit = models.ForeignKey(
         Unit, on_delete=models.CASCADE, verbose_name=_("Unit of measurement")
+    )
+    slug = models.SlugField(
+        max_length=250, blank=True, editable=False, verbose_name=_("slug")
     )
 
     def __str__(self):
         return f"{self.packing} {self.quantity} {self.unit}"
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.__str__())
+        super().save(*args, **kwargs)
 
     class Meta:
         unique_together = ("packing", "quantity", "unit")
@@ -143,6 +154,9 @@ class Catalog(MPTTModel):
         blank=True,
         related_name=_("children"),
     )
+    slug = models.SlugField(
+        max_length=250, blank=True, editable=False, verbose_name=_("slug")
+    )
     created = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_("Created")
     )
@@ -158,7 +172,7 @@ class Catalog(MPTTModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.__str__())
         super().save(*args, **kwargs)
 
 
