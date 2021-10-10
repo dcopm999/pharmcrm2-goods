@@ -10,7 +10,7 @@ from sorl.thumbnail import ImageField
 
 @reversion.register()
 class TradeName(models.Model):
-    name = models.CharField(max_length=250, verbose_name=_("Name"))
+    name = models.CharField(max_length=250, unique=True, verbose_name=_("Name"))
     slug = models.SlugField(editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))

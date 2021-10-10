@@ -1,21 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
 
-{% comment %}
-As the developer of this package, don't place anything here if you can help it
-since this allows developers to have interoperability between your template
-structure and their own.
+{% block title%}
+{{block.super}} | {% trans 'goods' %}
+{% endblock title %}
 
-Example: Developer melding the 2SoD pattern to fit inside with another pattern::
+{% block crumbs %}
+{{block.super}}
+<li class="breadcrumb-item"><a href="{% url 'goods:home' %}">{% trans 'goods' %}</a></li>
+{% endblock crumbs %}
 
-    {% extends "base.html" %}
-    {% load static %}
+{% block page_title %}
+{% trans 'Goods' %}
+{% endblock page_title%}
 
-    <!-- Their site uses old school block layout -->
-    {% block extra_js %}
-
-        <!-- Your package using 2SoD block layout -->
-        {% block javascript %}
-            <script src="{% static 'js/ninja.js' %}" type="text/javascript"></script>
-        {% endblock javascript %}
-
-    {% endblock extra_js %}
-{% endcomment %}
+{% block box_menu %}
+{% endblock box_menu %}
