@@ -19,3 +19,9 @@ class PackingForm(ModelForm):
     class Meta:
         model = models.Packing
         fields = ["name"]
+
+
+class UnitForm(ModelForm):
+    class Meta:
+        model = models.Unit
+        fields = ["name"]
