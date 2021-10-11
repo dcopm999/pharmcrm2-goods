@@ -13,3 +13,9 @@ class MakerForm(ModelForm):
     class Meta:
         model = models.Maker
         fields = ["name"]
+
+
+class PackingForm(ModelForm):
+    class Meta:
+        model = models.Packing
+        fields = ["name"]
