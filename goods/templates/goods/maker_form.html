@@ -1,0 +1,48 @@
+{% extends 'goods/maker_list.html' %}
+{% load i18n crispy_forms_tags %}
+
+{% block title %}
+{{block.super}} | {% trans 'Create' %}
+{% endblock %}
+
+
+{% block crumbs %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'goods:maker-create' %}">{% trans 'create' %}</a></li>
+{% endblock crumbs %}
+
+{% block page_title %}
+{% trans 'Maker' %}
+{% endblock page_title %}
+
+
+{% block content %}
+<div class="container-fluid col-6">
+
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title">{% trans 'Form' %}</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form class="form-horizontal" method="post">
+      <div class="card-body">
+	{% csrf_token %}
+	{{ form|crispy }}
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+	<button type="submit" class="btn btn-info">{% trans 'Send' %}</button>
+	{% url 'goods:maker-create' as urlcreate %}
+	{% if request.path_info == urlcreate %}
+	<a type="button" href="{% url 'goods:maker-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+	{% else %}
+	<a type="button" href="{% url 'goods:maker-detail' object.slug %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+	{% endif %}
+      </div>
+      <!-- /.card-footer -->
+    </form>
+  </div>
+
+</div>
+{% endblock content %}

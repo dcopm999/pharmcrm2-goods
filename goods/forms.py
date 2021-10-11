@@ -7,3 +7,9 @@ class TradeNameForm(ModelForm):
     class Meta:
         model = models.TradeName
         fields = ["name"]
+
+
+class MakerForm(ModelForm):
+    class Meta:
+        model = models.Maker
+        fields = ["name"]

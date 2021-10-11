@@ -1,4 +1,4 @@
-{% extends 'goods/tradename_list.html' %}
+{% extends 'goods/maker_list.html' %}
 {% load i18n %}
 
 {% block title %}
@@ -7,11 +7,11 @@
 
 {% block crumbs %}
 {{ block.super }}
-<li class="breadcrumb-item"><a href="{% url 'goods:tradename-detail' object.slug %}">{{object.name}}</a></li>
+<li class="breadcrumb-item"><a href="{% url 'goods:maker-detail' object.slug %}">{{object.name}}</a></li>
 {% endblock crumbs %}
 
 {% block page_title %}
-{% trans 'Trade Name' %} {{object.name}}
+{% trans 'Maker' %} {{object.name}}
 {% endblock page_title %}
 
 
@@ -41,12 +41,12 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      {% if perms.goods.delete_tradename %}
-      <a type="button" href="{% url 'goods:tradename-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
+      {% if perms.goods.delete_maker %}
+      <a type="button" href="{% url 'goods:maker-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
       {% endif %}
-      <a type="button" href="{% url 'goods:tradename-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
-      {% if perms.goods.change_tradename %}
-      <a type="button" href="{% url 'goods:tradename-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
+      <a type="button" href="{% url 'goods:maker-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+      {% if perms.goods.change_maker %}
+      <a type="button" href="{% url 'goods:maker-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
       {% endif %}
     </div>
     <!-- /.card-footer -->
