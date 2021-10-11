@@ -25,3 +25,9 @@ class UnitForm(ModelForm):
     class Meta:
         model = models.Unit
         fields = ["name"]
+
+
+class CatalogForm(ModelForm):
+    class Meta:
+        model = models.Catalog
+        fields = ["name", "parent"]

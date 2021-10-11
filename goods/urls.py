@@ -73,4 +73,21 @@ urlpatterns = [
     path(
         "unit/delete/<slug:slug>/", views.UnitDeleteView.as_view(), name="unit-delete"
     ),
+    path("catalog/list/", views.CatalogListView.as_view(), name="catalog-list"),
+    path(
+        "catalog/detail/<slug:slug>/",
+        views.CatalogDetailView.as_view(),
+        name="catalog-detail",
+    ),
+    path("catalog/create/", views.CatalogCreateView.as_view(), name="catalog-create"),
+    path(
+        "catalog/update/<slug:slug>/",
+        views.CatalogUpdateView.as_view(),
+        name="catalog-update",
+    ),
+    path(
+        "catalog/delete/<slug:slug>/",
+        views.CatalogDeleteView.as_view(),
+        name="catalog-delete",
+    ),
 ]
