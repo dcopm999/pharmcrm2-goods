@@ -103,3 +103,35 @@ class PackingDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
     permission_required = "goods.delete_packing"
     model = models.Packing
     success_url = reverse_lazy("goods:packing-list")
+
+
+class UnitListView(mixins.PermissionRequiredMixin, generic.ListView):
+    permission_required = "goods.view_unit"
+    model = models.Unit
+
+
+class UnitDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
+    permission_required = "goods.view_unit"
+    model = models.Unit
+
+
+class UnitCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
+    permission_required = "goods.add_unit"
+    model = models.Unit
+    form_class = forms.UnitForm
+    success_url = reverse_lazy("goods:unit-list")
+
+
+class UnitUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "goods.change_unit"
+    model = models.Unit
+    form_class = forms.UnitForm
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy("goods:unit-detail", kwargs={"slug": self.object.slug})
+
+
+class UnitDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "goods.delete_unit"
+    model = models.Unit
+    success_url = reverse_lazy("goods:unit-list")

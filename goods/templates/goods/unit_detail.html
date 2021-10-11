@@ -1,0 +1,57 @@
+{% extends 'goods/unit_list.html' %}
+{% load i18n %}
+
+{% block title %}
+{{block.super}} | {{object.name}}
+{% endblock %}
+
+{% block crumbs %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'goods:unit-detail' object.slug %}">{{object.name}}</a></li>
+{% endblock crumbs %}
+
+{% block page_title %}
+{% trans 'Units' %} {{object.name}}
+{% endblock page_title %}
+
+
+{% block content %}
+<div class="col-12">
+
+  <div class="card">
+
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Created' %}</th>
+            <th>{% trans 'Updated' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{object.name}}</td>
+            <td>{{object.created}}</td>
+            <td>{{object.updated}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      {% if perms.goods.delete_unit %}
+      <a type="button" href="{% url 'goods:unit-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
+      {% endif %}
+      <a type="button" href="{% url 'goods:unit-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+      {% if perms.goods.change_unit %}
+      <a type="button" href="{% url 'goods:unit-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
+      {% endif %}
+    </div>
+    <!-- /.card-footer -->
+  </div>
+  <!-- /.card -->
+
+</div>
+{% endblock content %}

@@ -62,4 +62,15 @@ urlpatterns = [
         views.PackingDeleteView.as_view(),
         name="packing-delete",
     ),
+    path("unit/list/", views.UnitListView.as_view(), name="unit-list"),
+    path(
+        "unit/detail/<slug:slug>/", views.UnitDetailView.as_view(), name="unit-detail"
+    ),
+    path("unit/create/", views.UnitCreateView.as_view(), name="unit-create"),
+    path(
+        "unit/update/<slug:slug>/", views.UnitUpdateView.as_view(), name="unit-update"
+    ),
+    path(
+        "unit/delete/<slug:slug>/", views.UnitDeleteView.as_view(), name="unit-delete"
+    ),
 ]
