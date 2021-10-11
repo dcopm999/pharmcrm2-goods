@@ -45,4 +45,21 @@ urlpatterns = [
         views.MakerDeleteView.as_view(),
         name="maker-delete",
     ),
+    path("packing/list/", views.PackingListView.as_view(), name="packing-list"),
+    path(
+        "packing/detail/<slug:slug>/",
+        views.PackingDetailView.as_view(),
+        name="packing-detail",
+    ),
+    path("packing/create/", views.PackingCreateView.as_view(), name="packing-create"),
+    path(
+        "packing/update/<slug:slug>/",
+        views.PackingUpdateView.as_view(),
+        name="packing-update",
+    ),
+    path(
+        "packing/delete/<slug:slug>/",
+        views.PackingDeleteView.as_view(),
+        name="packing-delete",
+    ),
 ]

@@ -71,3 +71,35 @@ class MakerDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
     permission_required = "goods.delete_maker"
     model = models.Maker
     success_url = reverse_lazy("goods:maker-list")
+
+
+class PackingListView(mixins.PermissionRequiredMixin, generic.ListView):
+    permission_required = "goods.view_packing"
+    model = models.Packing
+
+
+class PackingDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
+    permission_required = "goods.view_packing"
+    model = models.Packing
+
+
+class PackingCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
+    permission_required = "goods.add_packing"
+    model = models.Packing
+    form_class = forms.PackingForm
+    success_url = reverse_lazy("goods:packing-list")
+
+
+class PackingUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "goods.change_packing"
+    model = models.Packing
+    form_class = forms.PackingForm
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy("goods:packing-detail", kwargs={"slug": self.object.slug})
+
+
+class PackingDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "goods.delete_packing"
+    model = models.Packing
+    success_url = reverse_lazy("goods:packing-list")
