@@ -31,3 +31,9 @@ class CatalogForm(ModelForm):
     class Meta:
         model = models.Catalog
         fields = ["name", "parent"]
+
+
+class OriginalPackingForm(ModelForm):
+    class Meta:
+        model = models.OriginalPacking
+        fields = ["packing", "quantity", "unit"]
