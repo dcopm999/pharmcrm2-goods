@@ -64,7 +64,7 @@ class Packing(models.Model):
         verbose_name_plural = _("Packing types")
 
     def get_absolute_url(self):
-        return reverse("goods:maker-detail", args=[str(self.slug)])
+        return reverse("goods:packing-detail", args=[str(self.slug)])
 
     def __str__(self):
         return self.name
@@ -86,7 +86,7 @@ class Unit(models.Model):
         verbose_name_plural = _("Units of measurement")
 
     def get_absolute_url(self):
-        return reverse("goods:maker-detail", args=[str(self.slug)])
+        return reverse("goods:unit-detail", args=[str(self.slug)])
 
     def __str__(self):
         return self.name
@@ -112,6 +112,9 @@ class OriginalPacking(models.Model):
     )
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
+
+    def get_absolute_url(self):
+        return reverse("goods:originalpacking-detail", args=[str(self.slug)])
 
     def __str__(self):
         return f"{self.packing} {self.quantity} {self.unit}"
@@ -141,6 +144,9 @@ class DosagePacking(models.Model):
     )
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
+
+    def get_absolute_url(self):
+        return reverse("goods:dosagepacking-detail", args=[str(self.slug)])
 
     def __str__(self):
         return f"{self.packing} {self.quantity} {self.unit}"
@@ -178,6 +184,9 @@ class Catalog(MPTTModel):
     class Meta:
         verbose_name_plural = _("Catalogs")
         verbose_name = _("Catalog")
+
+    def get_absolute_url(self):
+        return reverse("goods:catalog-detail", args=[str(self.slug)])
 
     def __str__(self):
         return self.name
@@ -217,7 +226,7 @@ class PharmProduct(models.Model):
         verbose_name_plural = _("Pharmaceutical products")
 
     def get_absolute_url(self):
-        return reverse("goods:good-detail", args=[str(self.slug)])
+        return reverse("goods:pharmproduct-detail", args=[str(self.slug)])
 
     def __str__(self):
         return f"{self.maker.name}: {self.trade_name.name}, {self.dosage_packing}, {self.original_packing}"
