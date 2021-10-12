@@ -110,6 +110,8 @@ class OriginalPacking(models.Model):
     slug = models.SlugField(
         max_length=250, blank=True, editable=False, verbose_name=_("slug")
     )
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
+    updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     def __str__(self):
         return f"{self.packing} {self.quantity} {self.unit}"

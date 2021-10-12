@@ -90,4 +90,29 @@ urlpatterns = [
         views.CatalogDeleteView.as_view(),
         name="catalog-delete",
     ),
+    path(
+        "originalpacking/list/",
+        views.OriginalPackingListView.as_view(),
+        name="originalpacking-list",
+    ),
+    path(
+        "originalpacking/detail/<slug:slug>/",
+        views.OriginalPackingDetailView.as_view(),
+        name="originalpacking-detail",
+    ),
+    path(
+        "originalpacking/create/",
+        views.OriginalPackingCreateView.as_view(),
+        name="originalpacking-create",
+    ),
+    path(
+        "originalpacking/update/<slug:slug>/",
+        views.OriginalPackingUpdateView.as_view(),
+        name="originalpacking-update",
+    ),
+    path(
+        "originalpacking/delete/<slug:slug>/",
+        views.OriginalPackingDeleteView.as_view(),
+        name="originalpacking-delete",
+    ),
 ]

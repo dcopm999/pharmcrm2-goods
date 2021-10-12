@@ -167,3 +167,37 @@ class CatalogDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
     permission_required = "goods.delete_catalog"
     model = models.Catalog
     success_url = reverse_lazy("goods:catalog-list")
+
+
+class OriginalPackingListView(mixins.PermissionRequiredMixin, generic.ListView):
+    permission_required = "goods.view_originalpacking"
+    model = models.OriginalPacking
+
+
+class OriginalPackingDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
+    permission_required = "goods.view_originalpacking"
+    model = models.OriginalPacking
+
+
+class OriginalPackingCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
+    permission_required = "goods.add_originalpacking"
+    model = models.OriginalPacking
+    form_class = forms.OriginalPackingForm
+    success_url = reverse_lazy("goods:originalpacking-list")
+
+
+class OriginalPackingUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "goods.change_originalpacking"
+    model = models.OriginalPacking
+    form_class = forms.OriginalPackingForm
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy(
+            "goods:originalpacking-detail", kwargs={"slug": self.object.slug}
+        )
+
+
+class OriginalPackingDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "goods.delete_originalpacking"
+    model = models.OriginalPacking
+    success_url = reverse_lazy("goods:originalpacking-list")
