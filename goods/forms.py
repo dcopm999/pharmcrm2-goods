@@ -37,3 +37,9 @@ class OriginalPackingForm(ModelForm):
     class Meta:
         model = models.OriginalPacking
         fields = ["packing", "quantity", "unit"]
+
+
+class DosagePackingForm(ModelForm):
+    class Meta:
+        model = models.DosagePacking
+        fields = ["packing", "quantity", "unit"]

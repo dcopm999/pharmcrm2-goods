@@ -115,4 +115,29 @@ urlpatterns = [
         views.OriginalPackingDeleteView.as_view(),
         name="originalpacking-delete",
     ),
+    path(
+        "dosagepacking/list/",
+        views.DosagePackingListView.as_view(),
+        name="dosagepacking-list",
+    ),
+    path(
+        "dosagepacking/detail/<slug:slug>/",
+        views.DosagePackingDetailView.as_view(),
+        name="dosagepacking-detail",
+    ),
+    path(
+        "dosagepacking/create/",
+        views.DosagePackingCreateView.as_view(),
+        name="dosagepacking-create",
+    ),
+    path(
+        "dosagepacking/update/<slug:slug>/",
+        views.DosagePackingUpdateView.as_view(),
+        name="dosagepacking-update",
+    ),
+    path(
+        "dosagepacking/delete/<slug:slug>/",
+        views.DosagePackingDeleteView.as_view(),
+        name="dosagepacking-delete",
+    ),
 ]

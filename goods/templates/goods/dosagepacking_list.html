@@ -1,0 +1,68 @@
+{% extends 'goods/base.html' %}
+{% load i18n %}
+
+{% block title %}
+{{block.super}} | {% trans 'dosage packing' %}
+{% endblock %}
+
+
+{% block crumbs %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'goods:dosagepacking-list' %}">{% trans 'dosage packing' %}</a></li>
+{% endblock crumbs %}
+
+{% block page_title %}
+{% trans 'Dosage Packing' %}
+{% endblock page_title %}
+
+{% block content %}
+<div class="col-12">
+
+  <div class="card">
+    {% if perms.goods.add_dosagepacking %}
+
+    <div class="card-header">
+      <h3 class="card-title"></h3>
+
+      <div class="card-tools">
+	<div class="card-tools">
+          <a type="button" href="{% url 'goods:dosagepacking-create' %}" class="btn btn-info btn-sm" title="{% trans 'Аdding a new entry' %}">
+            <i class="fa fa-plus"></i> {% trans 'Add' %}
+          </a>
+        </div>
+      </div>
+
+    </div>
+    {% endif %}
+
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+            <th>{% trans 'Packing' %}</th>
+            <th>{% trans 'Quantity' %}</th>
+            <th>{% trans 'Unit' %}</th>
+	    <th>{% trans 'Created' %}</th>
+	    <th>{% trans 'Updated' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+	  {% for item in object_list %}
+          <tr onclick="window.location.href = '{% url "goods:dosagepacking-detail" item.slug %}'">
+            <td>{{item.packing}}</td>
+	    <td>{{item.quantity}}</td>
+	    <td>{{item.unit}}</td>
+            <td>{{item.created}}</td>
+            <td>{{item.updated}}</td>
+          </tr>
+	  {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</div>
+{% endblock %}
