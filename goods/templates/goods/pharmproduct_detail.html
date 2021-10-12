@@ -1,0 +1,61 @@
+{% extends 'goods/pharmproduct_list.html' %}
+{% load i18n %}
+
+{% block title %}
+{{block.super}} | {{object.name}}
+{% endblock %}
+
+{% block crumbs %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'goods:pharmproduct-detail' object.slug %}">{{object.name}}</a></li>
+{% endblock crumbs %}
+
+{% block page_title %}
+{% trans 'Parm Product' %} {{object.name}}
+{% endblock page_title %}
+
+
+{% block content %}
+<div class="col-12">
+
+  <div class="card">
+
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+          <tr>
+	    <th>{% trans 'Catalog' %}</th>
+            <th>{% trans 'Trade Name' %}</th>
+	    <th>{% trans 'Maker' %}</th>
+	    <th>{% trans 'Original Packing' %}</th>
+	    <th>{% trans 'Dosage Packing' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{object.catalog}}</td>
+	    <td>{{object.trade_name}}</td>
+            <td>{{object.maker}}</td>
+            <td>{{object.original_packing}}</td>
+	    <td>{{object.dosage_packing}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      {% if perms.goods.delete_pharmproduct %}
+      <a type="button" href="{% url 'goods:pharmproduct-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
+      {% endif %}
+      <a type="button" href="{% url 'goods:pharmproduct-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+      {% if perms.goods.change_pharmproduct %}
+      <a type="button" href="{% url 'goods:pharmproduct-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
+      {% endif %}
+    </div>
+    <!-- /.card-footer -->
+  </div>
+  <!-- /.card -->
+
+</div>
+{% endblock content %}

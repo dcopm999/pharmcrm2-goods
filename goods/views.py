@@ -235,3 +235,37 @@ class DosagePackingDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView
     permission_required = "goods.delete_dosagepacking"
     model = models.DosagePacking
     success_url = reverse_lazy("goods:dosagepacking-list")
+
+
+class PharmProductListView(mixins.PermissionRequiredMixin, generic.ListView):
+    permission_required = "goods.view_pharmproduct"
+    model = models.PharmProduct
+
+
+class PharmProductDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
+    permission_required = "goods.view_pharmproduct"
+    model = models.PharmProduct
+
+
+class PharmProductCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
+    permission_required = "goods.add_pharmproduct"
+    model = models.PharmProduct
+    form_class = forms.PharmProductForm
+    success_url = reverse_lazy("goods:pharmproduct-list")
+
+
+class PharmProductUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "goods.change_pharmproduct"
+    model = models.PharmProduct
+    form_class = forms.PharmProductForm
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy(
+            "goods:pharmproduct-detail", kwargs={"slug": self.object.slug}
+        )
+
+
+class PharmProductDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "goods.delete_pharmproduct"
+    model = models.PharmProduct
+    success_url = reverse_lazy("goods:pharmproduct-list")

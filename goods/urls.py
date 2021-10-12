@@ -140,4 +140,29 @@ urlpatterns = [
         views.DosagePackingDeleteView.as_view(),
         name="dosagepacking-delete",
     ),
+    path(
+        "pharmproduct/list/",
+        views.PharmProductListView.as_view(),
+        name="pharmproduct-list",
+    ),
+    path(
+        "pharmproduct/detail/<slug:slug>/",
+        views.PharmProductDetailView.as_view(),
+        name="pharmproduct-detail",
+    ),
+    path(
+        "pharmproduct/create/",
+        views.PharmProductCreateView.as_view(),
+        name="pharmproduct-create",
+    ),
+    path(
+        "pharmproduct/update/<slug:slug>/",
+        views.PharmProductUpdateView.as_view(),
+        name="pharmproduct-update",
+    ),
+    path(
+        "pharmproduct/delete/<slug:slug>/",
+        views.PharmProductDeleteView.as_view(),
+        name="pharmproduct-delete",
+    ),
 ]
