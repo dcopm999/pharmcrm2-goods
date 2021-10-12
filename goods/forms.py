@@ -43,3 +43,15 @@ class DosagePackingForm(ModelForm):
     class Meta:
         model = models.DosagePacking
         fields = ["packing", "quantity", "unit"]
+
+
+class PharmProductForm(ModelForm):
+    class Meta:
+        model = models.PharmProduct
+        fields = [
+            "catalog",
+            "trade_name",
+            "maker",
+            "original_packing",
+            "dosage_packing",
+        ]

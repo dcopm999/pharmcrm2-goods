@@ -212,7 +212,7 @@ class PharmProduct(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     class Meta:
-        unique_together = ("trade_name", "maker", "dosage_packing")
+        unique_together = ("trade_name", "maker", "original_packing", "dosage_packing")
         verbose_name = _("Pharmaceutical product")
         verbose_name_plural = _("Pharmaceutical products")
 
