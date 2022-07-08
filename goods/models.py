@@ -33,7 +33,7 @@ class TradeName(models.Model):
 
 @reversion.register()
 class Maker(models.Model):
-    name = models.CharField(max_length=250, verbose_name=_("Name"))
+    name = models.CharField(max_length=250, unique=True, verbose_name=_("Name"))
     slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
@@ -56,7 +56,7 @@ class Maker(models.Model):
 
 @reversion.register()
 class Packing(models.Model):
-    name = models.CharField(max_length=250, verbose_name=_("Name"))
+    name = models.CharField(max_length=250, unique=True, verbose_name=_("Name"))
     slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
@@ -79,7 +79,7 @@ class Packing(models.Model):
 
 @reversion.register()
 class Unit(models.Model):
-    name = models.CharField(max_length=250, verbose_name=_("Name"))
+    name = models.CharField(max_length=250, unique=True, verbose_name=_("Name"))
     slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
@@ -128,6 +128,7 @@ class OriginalPacking(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
+        unique_together = ("packing", "quantity", "unit")
         verbose_name = _("Original Packing")
         verbose_name_plural = _("Original Packings")
 
