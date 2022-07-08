@@ -11,11 +11,12 @@ from sorl.thumbnail import ImageField
 @reversion.register()
 class TradeName(models.Model):
     name = models.CharField(max_length=250, unique=True, verbose_name=_("Name"))
-    slug = models.SlugField(editable=False, verbose_name=_("slug"))
+    slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     class Meta:
+        ordering = ["-name"]
         verbose_name = _("Trade name")
         verbose_name_plural = _("Trade names")
 
@@ -33,11 +34,12 @@ class TradeName(models.Model):
 @reversion.register()
 class Maker(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
-    slug = models.SlugField(editable=False, verbose_name=_("slug"))
+    slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     class Meta:
+        ordering = ["-name"]
         verbose_name = _("Maker")
         verbose_name_plural = _("Makers")
 
@@ -55,11 +57,12 @@ class Maker(models.Model):
 @reversion.register()
 class Packing(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
-    slug = models.SlugField(editable=False, verbose_name=_("slug"))
+    slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     class Meta:
+        ordering = ["-name"]
         verbose_name = _("Packing type")
         verbose_name_plural = _("Packing types")
 
@@ -77,11 +80,12 @@ class Packing(models.Model):
 @reversion.register()
 class Unit(models.Model):
     name = models.CharField(max_length=250, verbose_name=_("Name"))
-    slug = models.SlugField(editable=False, verbose_name=_("slug"))
+    slug = models.SlugField(max_length=250, editable=False, verbose_name=_("slug"))
     created = models.DateTimeField(auto_now_add=True, verbose_name=_("Created"))
     updated = models.DateTimeField(auto_now=True, verbose_name=_("Updated"))
 
     class Meta:
+        ordering = ["-name"]
         verbose_name = _("Unit of measurement")
         verbose_name_plural = _("Units of measurement")
 
@@ -206,7 +210,11 @@ class PharmProduct(models.Model):
         OriginalPacking, on_delete=models.PROTECT, verbose_name=_("Original packing")
     )
     dosage_packing = models.ForeignKey(
-        DosagePacking, on_delete=models.PROTECT, verbose_name=_("Dosage packing")
+        DosagePacking,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=_("Dosage packing"),
     )
     catalog = models.ForeignKey(
         Catalog, on_delete=models.PROTECT, verbose_name="Catalog"
@@ -229,7 +237,12 @@ class PharmProduct(models.Model):
         return reverse("goods:pharmproduct-detail", args=[str(self.slug)])
 
     def __str__(self):
-        return f"{self.maker.name}: {self.trade_name.name}, {self.dosage_packing}, {self.original_packing}"
+        result = f"{self.maker.name}: {self.trade_name.name}"
+        if self.dosage_packing is not None:
+            result += f", {self.dosage_packing}"
+        if self.original_packing is not None:
+            result += f", {self.original_packing}"
+        return result
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.__str__())
