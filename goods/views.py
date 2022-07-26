@@ -237,35 +237,33 @@ class DosagePackingDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView
     success_url = reverse_lazy("goods:dosagepacking-list")
 
 
-class PharmProductListView(mixins.PermissionRequiredMixin, generic.ListView):
-    permission_required = "goods.view_pharmproduct"
-    model = models.PharmProduct
+class GoodListView(mixins.PermissionRequiredMixin, generic.ListView):
+    permission_required = "goods.view_good"
+    model = models.Good
 
 
-class PharmProductDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
-    permission_required = "goods.view_pharmproduct"
-    model = models.PharmProduct
+class GoodDetailView(mixins.PermissionRequiredMixin, generic.DetailView):
+    permission_required = "goods.view_good"
+    model = models.Good
 
 
-class PharmProductCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
-    permission_required = "goods.add_pharmproduct"
-    model = models.PharmProduct
-    form_class = forms.PharmProductForm
-    success_url = reverse_lazy("goods:pharmproduct-list")
+class GoodCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
+    permission_required = "goods.add_good"
+    model = models.Good
+    form_class = forms.GoodForm
+    success_url = reverse_lazy("goods:good-list")
 
 
-class PharmProductUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
-    permission_required = "goods.change_pharmproduct"
-    model = models.PharmProduct
-    form_class = forms.PharmProductForm
+class GoodUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
+    permission_required = "goods.change_good"
+    model = models.Good
+    form_class = forms.GoodForm
 
     def get_success_url(self, *args, **kwargs):
-        return reverse_lazy(
-            "goods:pharmproduct-detail", kwargs={"slug": self.object.slug}
-        )
+        return reverse_lazy("goods:good-detail", kwargs={"slug": self.object.slug})
 
 
-class PharmProductDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
-    permission_required = "goods.delete_pharmproduct"
-    model = models.PharmProduct
-    success_url = reverse_lazy("goods:pharmproduct-list")
+class GoodDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
+    permission_required = "goods.delete_good"
+    model = models.Good
+    success_url = reverse_lazy("goods:good-list")

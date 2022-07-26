@@ -175,7 +175,7 @@ class DosagePackingModelCase(TestCase):
         pass
 
 
-class PharmProductModelCase(TestCase):
+class GoodModelCase(TestCase):
     def setUp(self):
         catalog = models.Catalog.objects.create(name="обезболивающие")
         trade_name = models.TradeName.objects.create(name="Анальгин")
@@ -189,7 +189,7 @@ class PharmProductModelCase(TestCase):
             packing=packing, quantity=10, unit=unit
         )
 
-        self.query = models.PharmProduct.objects.create(
+        self.query = models.Good.objects.create(
             catalog=catalog,
             trade_name=trade_name,
             maker=maker,
@@ -197,29 +197,29 @@ class PharmProductModelCase(TestCase):
             dosage_packing=dosage,
         )
 
-    def test_pharmproduct_absolute_url(self):
+    def test_good_absolute_url(self):
         self.assertEqual(
             self.query.get_absolute_url(),
-            reverse("goods:pharmproduct-detail", args=[str(self.query.slug)]),
+            reverse("goods:good-detail", args=[str(self.query.slug)]),
         )
 
-    def test_pharmproduct_str(self):
+    def test_good_str(self):
         self.assertEqual(
             self.query.__str__(),
             f"{self.query.maker.name}: {self.query.trade_name.name}, {self.query.dosage_packing.__str__()}, {self.query.original_packing.__str__()}",  # noqa
         )
 
-    def test_pharmproduct_fullname(self):
+    def test_good_fullname(self):
         self.assertEqual(self.query.__str__(), self.query.full_name)
 
-    def test_pharmproduct_slug(self):
+    def test_good_slug(self):
         self.assertEqual(self.query.slug, slugify(self.query.__str__()))
 
     def tearDown(self):
         pass
 
 
-class PharmProductImageModelCase(TestCase):
+class GoodImageModelCase(TestCase):
     def setUp(self):
         catalog = models.Catalog.objects.create(name="обезболивающие")
         trade_name = models.TradeName.objects.create(name="Анальгин")
@@ -233,20 +233,20 @@ class PharmProductImageModelCase(TestCase):
             packing=packing, quantity=10, unit=unit
         )
 
-        pharm_product = models.PharmProduct.objects.create(
+        good = models.Good.objects.create(
             catalog=catalog,
             trade_name=trade_name,
             maker=maker,
             original_packing=original,
             dosage_packing=dosage,
         )
-        self.query = models.PharmProductImage.objects.create(
-            product_parent=pharm_product,
-            img=SimpleUploadedFile("small.gif", small_gif, content_type="image/gif"),
+        self.query = models.GoodImage.objects.create(
+            good=good,
+            image=SimpleUploadedFile("small.gif", small_gif, content_type="image/gif"),
         )
 
-    def test_pharmproductimage_str(self):
-        self.assertEqual(self.query.__str__(), self.query.img.url)
+    def test_good_image_str(self):
+        self.assertEqual(self.query.__str__(), self.query.image.url)
 
     def tearDown(self):
         pass

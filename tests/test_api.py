@@ -3,11 +3,14 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from tests import factories
+
 User = get_user_model()
 
 
 class ApiCase(APITestCase):
     def setUp(self):
+        # self.factory = factories.GoodFactory()
         credentials = {"username": "admin", "password": "admin"}
         user = User.objects.create_user(**credentials)
         self.client.force_authenticate(user=user)
@@ -38,39 +41,42 @@ class ApiCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_original_packing(self):
-        self.test_packing()
-        self.test_unit()
+        factory = factories.OriginalPackingFactory()
         url = reverse("goods-api:originalpacking-list")
-        response = self.client.post(url, {"packing": 1, "unit": 1, "quantity": 0.1})
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_dosage_packing(self):
-        self.test_packing()
-        self.test_unit()
-        url = reverse("goods-api:dosagepacking-list")
-        response = self.client.post(url, {"packing": 1, "unit": 1, "quantity": 1.0})
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_pharm_product(self):
-        self.test_trade_name()
-        self.test_maker()
-        self.test_catalog()
-        self.test_original_packing()
-        self.test_dosage_packing()
-        url = reverse("goods-api:pharmproduct-list")
         response = self.client.post(
             url,
-            {
-                "catalog": 1,
-                "trade_name": 1,
-                "maker": 1,
-                "original_packing": 1,
-                "dosage_packing": 1,
-            },
+            {"packing": factory.packing_id, "unit": factory.unit_id, "quantity": 0.1},
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    def test_pharm_product_image(self):
-        url = reverse("goods-api:pharmproductimage-list")
+    def test_dosage_packing(self):
+        factory = factories.DosagePackingFactory()
+        url = reverse("goods-api:dosagepacking-list")
+        response = self.client.post(
+            url,
+            {"packing": factory.packing_id, "unit": factory.unit_id, "quantity": 1.0},
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    """
+    def test_good(self):
+        factory = factories.GoodFactory.create()
+        url = reverse("goods-api:good-list")
+        response = self.client.post(
+            url,
+            {
+                "catalog": factory.catalog_id,
+                "trade_name": factory.trade_name_id,
+                "maker": factory.maker_id,
+                "original_packing": factory.original_packing_id,
+                "dosage_packing": factory.dosage_packing_id,
+            },
+        )
+        print(response.json())
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    """
+
+    def test_good_image(self):
+        url = reverse("goods-api:goodimage-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

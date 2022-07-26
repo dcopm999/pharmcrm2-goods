@@ -202,7 +202,7 @@ class Catalog(MPTTModel):
 
 
 @reversion.register()
-class PharmProduct(models.Model):
+class Good(models.Model):
     trade_name = models.ForeignKey(
         TradeName, on_delete=models.PROTECT, verbose_name=_("Trade name")
     )
@@ -231,11 +231,11 @@ class PharmProduct(models.Model):
 
     class Meta:
         unique_together = ("trade_name", "maker", "original_packing", "dosage_packing")
-        verbose_name = _("Pharmaceutical product")
-        verbose_name_plural = _("Pharmaceutical products")
+        verbose_name = _("Pharmaceutical good")
+        verbose_name_plural = _("Pharmaceutical goods")
 
     def get_absolute_url(self):
-        return reverse("goods:pharmproduct-detail", args=[str(self.slug)])
+        return reverse("goods:good-detail", args=[str(self.slug)])
 
     def __str__(self):
         result = f"{self.maker.name}: {self.trade_name.name}"
@@ -252,14 +252,14 @@ class PharmProduct(models.Model):
 
 
 @reversion.register()
-class PharmProductImage(models.Model):
-    img = ImageField(upload_to="thumbnails", verbose_name=_("Image"))
-    product_parent = models.ForeignKey(
-        PharmProduct,
+class GoodImage(models.Model):
+    image = ImageField(upload_to="thumbnails", verbose_name=_("Image"))
+    good = models.ForeignKey(
+        Good,
         on_delete=models.CASCADE,
         related_name="images",
         verbose_name=_("Parent"),
     )
 
     def __str__(self):
-        return self.img.url
+        return self.image.url
