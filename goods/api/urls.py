@@ -10,8 +10,8 @@ router.register("packing", views.PackingViewSet)
 router.register("unit", views.UnitViewSet)
 router.register("original_packing", views.OriginalPackingViewSet)
 router.register("dosage_packing", views.DosagePackingViewSet)
-router.register("pharm_product", views.PharmProductViewSet)
-router.register("pharm_product_image", views.PharmProductImageViewSet)
+router.register("good", views.GoodViewSet)
+router.register("good_image", views.GoodImageViewSet)
 
 
 app_name = "goods-api"

@@ -45,13 +45,13 @@ class DosagePackingSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class PharmProductSerializer(serializers.ModelSerializer):
+class GoodSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.PharmProduct
+        model = models.Good
         fields = "__all__"
 
 
-class PharmProductImageSerializer(serializers.ModelSerializer):
+class GoodImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.PharmProductImage
+        model = models.GoodImage
         fields = "__all__"

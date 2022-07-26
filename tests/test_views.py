@@ -1,21 +1,49 @@
 from django.contrib.auth import get_user_model
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client, TestCase
 from django.urls import reverse
 
 from goods import models
 
+small_gif = (
+    b"\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04"
+    b"\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02"
+    b"\x02\x4c\x01\x00\x3b"
+)
+
 User = get_user_model()
 
 
 class TradeNameCase(TestCase):
-    fixtures = ["goods"]
-
     def setUp(self):
         user_admin = User.objects.create(
             username="admin", password="admin", is_superuser=True
         )
         self.client = Client()
         self.client.force_login(user=user_admin)
+        catalog = models.Catalog.objects.create(name="обезболивающие")
+        trade_name = models.TradeName.objects.create(name="Анальгин")
+        maker = models.Maker.objects.create(name="Sanofi")
+        unit = models.Unit.objects.create(name="шт.")
+        packing = models.Packing.objects.create(name="табл.")
+        original = models.OriginalPacking.objects.create(
+            packing=packing, quantity=10, unit=unit
+        )
+        dosage = models.DosagePacking.objects.create(
+            packing=packing, quantity=10, unit=unit
+        )
+
+        good = models.Good.objects.create(
+            catalog=catalog,
+            trade_name=trade_name,
+            maker=maker,
+            original_packing=original,
+            dosage_packing=dosage,
+        )
+        self.query = models.GoodImage.objects.create(
+            good=good,
+            image=SimpleUploadedFile("small.gif", small_gif, content_type="image/gif"),
+        )
 
     def test_tradename_update(self):
         name = "name_update"
@@ -100,16 +128,16 @@ class TradeNameCase(TestCase):
             response, reverse("goods:dosagepacking-detail", args=[test_query.slug])
         )
 
-    def test_pharmproduct_update(self):
+    def test_good_update(self):
         trade_name = models.TradeName.objects.create(name="product_trade_name2")
         maker = models.Maker.objects.last()
         original_packing = models.OriginalPacking.objects.last()
         dosage_packing = models.DosagePacking.objects.last()
         catalog = models.Catalog.objects.last()
-        query = models.PharmProduct.objects.last()
+        query = models.Good.objects.last()
 
         response = self.client.post(
-            reverse("goods:pharmproduct-update", args=[query.slug]),
+            reverse("goods:good-update", args=[query.slug]),
             {
                 "trade_name": trade_name.pk,
                 "maker": maker.pk,
@@ -118,7 +146,7 @@ class TradeNameCase(TestCase):
                 "catalog": catalog.pk,
             },
         )
-        test_query = models.PharmProduct.objects.last()
+        test_query = models.Good.objects.last()
         self.assertRedirects(
-            response, reverse("goods:pharmproduct-detail", args=[test_query.slug])
+            response, reverse("goods:good-detail", args=[test_query.slug])
         )

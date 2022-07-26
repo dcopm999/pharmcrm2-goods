@@ -47,13 +47,13 @@ class CatalogViewSet(ModelViewSet):
     permission_class = [DjangoObjectPermissions]
 
 
-class PharmProductViewSet(ModelViewSet):
-    queryset = models.PharmProduct.objects.all()
-    serializer_class = serializers.PharmProductSerializer
+class GoodViewSet(ModelViewSet):
+    queryset = models.Good.objects.all()
+    serializer_class = serializers.GoodSerializer
     permission_class = [DjangoObjectPermissions]
 
 
-class PharmProductImageViewSet(ModelViewSet):
-    queryset = models.PharmProductImage.objects.all()
-    serializer_class = serializers.PharmProductImageSerializer
+class GoodImageViewSet(ModelViewSet):
+    queryset = models.GoodImage.objects.all()
+    serializer_class = serializers.GoodImageSerializer
     permission_class = [DjangoObjectPermissions]

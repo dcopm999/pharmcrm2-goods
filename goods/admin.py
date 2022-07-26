@@ -7,8 +7,8 @@ from sorl.thumbnail.admin import AdminImageMixin
 from goods import models
 
 
-class PharmProductImageInline(AdminImageMixin, admin.TabularInline):
-    model = models.PharmProductImage
+class GoodImageInline(AdminImageMixin, admin.TabularInline):
+    model = models.GoodImage
 
 
 @admin.register(models.TradeName)
@@ -64,10 +64,10 @@ class CatalogAdmin(VersionAdmin, MPTTModelAdmin):
     ]
 
 
-@admin.register(models.PharmProduct)
-class PharmProductAdmin(VersionAdmin):
+@admin.register(models.Good)
+class GoodAdmin(VersionAdmin):
     inlines = [
-        PharmProductImageInline,
+        GoodImageInline,
     ]
     list_display = [
         "trade_name",

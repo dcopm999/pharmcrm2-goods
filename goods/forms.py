@@ -45,9 +45,9 @@ class DosagePackingForm(ModelForm):
         fields = ["packing", "quantity", "unit"]
 
 
-class PharmProductForm(ModelForm):
+class GoodForm(ModelForm):
     class Meta:
-        model = models.PharmProduct
+        model = models.Good
         fields = [
             "catalog",
             "trade_name",
