@@ -168,7 +168,7 @@ class DosagePacking(models.Model):
 
 @reversion.register()
 class Catalog(MPTTModel):
-    name = models.CharField(max_length=250, verbose_name=_("Name"))
+    name: models.CharField = models.CharField(max_length=250, verbose_name=_("Name"))
     parent = TreeForeignKey(
         "self",
         on_delete=models.CASCADE,
@@ -176,13 +176,13 @@ class Catalog(MPTTModel):
         blank=True,
         related_name=_("children"),
     )
-    slug = models.SlugField(
+    slug: models.SlugField = models.SlugField(
         max_length=250, blank=True, editable=False, verbose_name=_("slug")
     )
-    created = models.DateTimeField(
+    created: models.DateTimeField = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_("Created")
     )
-    updated = models.DateTimeField(
+    updated: models.DateTimeField = models.DateTimeField(
         auto_now=True, editable=False, verbose_name=_("Updated")
     )
 

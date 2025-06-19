@@ -14,6 +14,66 @@ small_gif = (
 User = get_user_model()
 
 
+class HomeCase(TestCase):
+    def setUp(self):
+        user_admin = User.objects.create(
+            username="admin", password="admin", is_superuser=True
+        )
+        self.client = Client()
+        self.client.force_login(user=user_admin)
+
+    def test_goods_home_accessible(self):
+        response = self.client.get(reverse("goods:home"))  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+
+class MakerCase(TestCase):
+    def setUp(self):
+        user_admin = User.objects.create(
+            username="admin", password="admin", is_superuser=True
+        )
+        self.client = Client()
+        self.client.force_login(user=user_admin)
+        self.maker = models.Maker.objects.create(name="Sanofi")
+
+    def test_goods_maker_list_accessible(self):
+        response = self.client.get(
+            reverse("goods:maker-list")
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_maker_detail_accessible(self):
+        query = models.Maker.objects.last()
+        response = self.client.get(
+            reverse("goods:maker-detail", args=[query.slug])
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_maker_create_accessible(self):
+        response = self.client.get(
+            reverse("goods:maker-create")
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_maker_update(self):
+        name = "name_update"
+        query = models.Maker.objects.last()
+        response = self.client.post(
+            reverse("goods:maker-update", args=[query.slug]), {"name": name}
+        )
+        test_query = models.Maker.objects.get(name=name)
+        self.assertRedirects(
+            response, reverse("goods:maker-detail", args=[test_query.slug])
+        )
+
+    def test_goods_maker_delete_accessible(self):
+        query = models.Maker.objects.create(name="PG")
+        response = self.client.get(
+            reverse("goods:maker-delete", args=[query.slug])
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+
 class TradeNameCase(TestCase):
     def setUp(self):
         user_admin = User.objects.create(
@@ -22,7 +82,7 @@ class TradeNameCase(TestCase):
         self.client = Client()
         self.client.force_login(user=user_admin)
         catalog = models.Catalog.objects.create(name="обезболивающие")
-        trade_name = models.TradeName.objects.create(name="Анальгин")
+        self.trade_name = models.TradeName.objects.create(name="Анальгин")
         maker = models.Maker.objects.create(name="Sanofi")
         unit = models.Unit.objects.create(name="шт.")
         packing = models.Packing.objects.create(name="табл.")
@@ -35,7 +95,7 @@ class TradeNameCase(TestCase):
 
         good = models.Good.objects.create(
             catalog=catalog,
-            trade_name=trade_name,
+            trade_name=self.trade_name,
             maker=maker,
             original_packing=original,
             dosage_packing=dosage,
@@ -45,7 +105,31 @@ class TradeNameCase(TestCase):
             image=SimpleUploadedFile("small.gif", small_gif, content_type="image/gif"),
         )
 
-    def test_tradename_update(self):
+    def test_goods_tradename_list_accessible(self):
+        response = self.client.get(
+            reverse("goods:tradename-list")
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_tradename_detail_accessible(self):
+        response = self.client.get(
+            reverse("goods:tradename-detail", args=[self.trade_name.slug])
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_tradename_create_accessible(self):
+        response = self.client.get(
+            reverse("goods:tradename-create")
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_tradename_delete_accessible(self):
+        response = self.client.get(
+            reverse("goods:tradename-delete", args=[self.trade_name.slug])
+        )  # укажите нужный URL страницы
+        self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
+
+    def test_goods_tradename_update(self):
         name = "name_update"
         query = models.TradeName.objects.last()
         response = self.client.post(
@@ -54,17 +138,6 @@ class TradeNameCase(TestCase):
         test_query = models.TradeName.objects.get(name=name)
         self.assertRedirects(
             response, reverse("goods:tradename-detail", args=[test_query.slug])
-        )
-
-    def test_maker_update(self):
-        name = "name_update"
-        query = models.Maker.objects.last()
-        response = self.client.post(
-            reverse("goods:maker-update", args=[query.slug]), {"name": name}
-        )
-        test_query = models.Maker.objects.get(name=name)
-        self.assertRedirects(
-            response, reverse("goods:maker-detail", args=[test_query.slug])
         )
 
     def test_packing_update(self):

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "rest_framework",
     "crispy_forms",
+    "crispy_bootstrap4",
     "reversion",
     "goods",
     "mptt",
@@ -148,3 +149,5 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     # OTHER SETTINGS
 }
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
