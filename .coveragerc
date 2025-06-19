@@ -3,9 +3,9 @@ branch = true
 
 [report]
 omit =
-    *site-packages*
-    *tests*
-    *.tox*
+    */site-packages/*
+    */tests/*
+    */.tox/*
     */migrations/*
 
 show_missing = True
