@@ -41,6 +41,7 @@ repos:
             django-mptt,
             sorl-thumbnail,
             django-crispy-forms,
+	    crispy_bootstrap4,
 	    drf-spectacular,
             python-slugify,
             types-python-slugify,

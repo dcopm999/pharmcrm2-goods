@@ -7,3 +7,4 @@ pillow==11.2.1
 drf-spectacular==0.28.0
 django-reversion==5.1.0
 django-crispy-forms==2.4
+crispy-bootstrap4==2025.6
