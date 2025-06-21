@@ -1,6 +1,7 @@
 *.py[cod]
 __pycache__
 *[~#]
+*.mo
 db.sqlite3
 thumbnails/
 static/
