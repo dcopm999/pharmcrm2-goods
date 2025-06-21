@@ -1,0 +1,487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-21 14:33+0000\n"
+"PO-Revision-Date: 2025-06-21 18:47+0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: goods/apps.py:8 goods/templates/goods/base.html:5
+#: goods/templates/goods/base.html:10
+msgid "goods"
+msgstr "товары"
+
+#: goods/models.py:13 goods/models.py:36 goods/models.py:59 goods/models.py:82
+#: goods/models.py:171 goods/templates/goods/catalog_detail.html:28
+#: goods/templates/goods/catalog_list.html:43
+#: goods/templates/goods/maker_detail.html:28
+#: goods/templates/goods/maker_list.html:43
+#: goods/templates/goods/packing_detail.html:28
+#: goods/templates/goods/packing_list.html:43
+#: goods/templates/goods/tradename_detail.html:28
+#: goods/templates/goods/tradename_list.html:43
+#: goods/templates/goods/unit_detail.html:28
+#: goods/templates/goods/unit_list.html:43
+msgid "Name"
+msgstr "Название"
+
+#: goods/models.py:14 goods/models.py:37 goods/models.py:60 goods/models.py:83
+#: goods/models.py:115 goods/models.py:148 goods/models.py:180
+#: goods/models.py:224
+msgid "slug"
+msgstr ""
+
+#: goods/models.py:15 goods/models.py:38 goods/models.py:61 goods/models.py:84
+#: goods/models.py:117 goods/models.py:150 goods/models.py:183
+#: goods/models.py:229 goods/templates/goods/catalog_detail.html:30
+#: goods/templates/goods/catalog_list.html:45
+#: goods/templates/goods/dosagepacking_detail.html:31
+#: goods/templates/goods/dosagepacking_list.html:46
+#: goods/templates/goods/good_list.html:44
+#: goods/templates/goods/maker_detail.html:29
+#: goods/templates/goods/maker_list.html:44
+#: goods/templates/goods/originalpacking_detail.html:31
+#: goods/templates/goods/originalpacking_list.html:46
+#: goods/templates/goods/packing_detail.html:29
+#: goods/templates/goods/packing_list.html:44
+#: goods/templates/goods/tradename_detail.html:29
+#: goods/templates/goods/tradename_list.html:44
+#: goods/templates/goods/unit_detail.html:29
+#: goods/templates/goods/unit_list.html:44
+msgid "Created"
+msgstr "Создан"
+
+#: goods/models.py:16 goods/models.py:39 goods/models.py:62 goods/models.py:85
+#: goods/models.py:118 goods/models.py:151 goods/models.py:186
+#: goods/models.py:230 goods/templates/goods/catalog_detail.html:31
+#: goods/templates/goods/catalog_list.html:46
+#: goods/templates/goods/dosagepacking_detail.html:32
+#: goods/templates/goods/dosagepacking_list.html:47
+#: goods/templates/goods/good_list.html:45
+#: goods/templates/goods/maker_detail.html:30
+#: goods/templates/goods/maker_list.html:45
+#: goods/templates/goods/originalpacking_detail.html:32
+#: goods/templates/goods/originalpacking_list.html:47
+#: goods/templates/goods/packing_detail.html:30
+#: goods/templates/goods/packing_list.html:45
+#: goods/templates/goods/tradename_detail.html:30
+#: goods/templates/goods/tradename_list.html:45
+#: goods/templates/goods/unit_detail.html:30
+#: goods/templates/goods/unit_list.html:45
+msgid "Updated"
+msgstr "Обновлен"
+
+#: goods/models.py:20 goods/models.py:207
+msgid "Trade name"
+msgstr "Торговое название"
+
+#: goods/models.py:21
+msgid "Trade names"
+msgstr "Торговые названия"
+
+#: goods/models.py:43 goods/models.py:209
+#: goods/templates/goods/good_detail.html:30
+#: goods/templates/goods/maker_detail.html:14
+#: goods/templates/goods/maker_form.html:15
+#: goods/templates/goods/maker_list.html:15
+msgid "Maker"
+msgstr "Производитель"
+
+#: goods/models.py:44
+msgid "Makers"
+msgstr "Производители"
+
+#: goods/models.py:66 goods/models.py:106 goods/models.py:139
+msgid "Packing type"
+msgstr "Тип упаковки"
+
+#: goods/models.py:67
+msgid "Packing types"
+msgstr "Типы упаковок"
+
+#: goods/models.py:89 goods/models.py:112 goods/models.py:145
+msgid "Unit of measurement"
+msgstr "Единица измерения"
+
+#: goods/models.py:90
+msgid "Units of measurement"
+msgstr "Единицы измерения"
+
+#: goods/models.py:109 goods/models.py:142
+#: goods/templates/goods/dosagepacking_detail.html:29
+#: goods/templates/goods/dosagepacking_list.html:44
+#: goods/templates/goods/originalpacking_detail.html:29
+#: goods/templates/goods/originalpacking_list.html:44
+msgid "Quantity"
+msgstr "Количество"
+
+#: goods/models.py:132 goods/templates/goods/good_detail.html:31
+#: goods/templates/goods/originalpacking_detail.html:14
+#: goods/templates/goods/originalpacking_form.html:15
+#: goods/templates/goods/originalpacking_list.html:15
+msgid "Original Packing"
+msgstr "Оригинальная упаковка"
+
+#: goods/models.py:133
+msgid "Original Packings"
+msgstr "Оригинальные упаковки"
+
+#: goods/models.py:165 goods/models.py:218
+msgid "Dosage packing"
+msgstr "Дозировка упаковки"
+
+#: goods/models.py:166
+msgid "Dosage packings"
+msgstr "Дозировки упаковок"
+
+#: goods/models.py:177
+msgid "children"
+msgstr "дети"
+
+#: goods/models.py:190
+msgid "Catalogs"
+msgstr "Каталоги"
+
+#: goods/models.py:191 goods/templates/goods/catalog_detail.html:14
+#: goods/templates/goods/catalog_form.html:15
+#: goods/templates/goods/catalog_list.html:15
+#: goods/templates/goods/good_detail.html:28
+msgid "Catalog"
+msgstr "Каталог"
+
+#: goods/models.py:211
+msgid "Original packing"
+msgstr "Оригинальная упаковка"
+
+#: goods/models.py:227
+msgid "Full name"
+msgstr "Полное имя"
+
+#: goods/models.py:234
+msgid "Pharmaceutical good"
+msgstr "Фармацевтический товар"
+
+#: goods/models.py:235
+msgid "Pharmaceutical goods"
+msgstr "Фармацевтические товары"
+
+#: goods/models.py:256
+msgid "Image"
+msgstr "Изображение"
+
+#: goods/models.py:261 goods/templates/goods/catalog_detail.html:29
+#: goods/templates/goods/catalog_list.html:44
+msgid "Parent"
+msgstr "Владелец"
+
+#: goods/templates/goods/base.html:14
+msgid "Goods"
+msgstr "Товары"
+
+#: goods/templates/goods/catalog_confirm_delete.html:5
+#: goods/templates/goods/catalog_confirm_delete.html:10
+#: goods/templates/goods/dosagepacking_confirm_delete.html:5
+#: goods/templates/goods/dosagepacking_confirm_delete.html:10
+#: goods/templates/goods/maker_confirm_delete.html:5
+#: goods/templates/goods/maker_confirm_delete.html:10
+#: goods/templates/goods/originalpacking_confirm_delete.html:5
+#: goods/templates/goods/originalpacking_confirm_delete.html:10
+#: goods/templates/goods/packing_confirm_delete.html:5
+#: goods/templates/goods/packing_confirm_delete.html:10
+#: goods/templates/goods/pharmproduct_confirm_delete.html:5
+#: goods/templates/goods/pharmproduct_confirm_delete.html:10
+#: goods/templates/goods/tradename_confirm_delete.html:5
+#: goods/templates/goods/tradename_confirm_delete.html:10
+#: goods/templates/goods/unit_confirm_delete.html:5
+#: goods/templates/goods/unit_confirm_delete.html:10
+msgid "delete"
+msgstr "удалить"
+
+#: goods/templates/goods/catalog_confirm_delete.html:14
+#: goods/templates/goods/catalog_detail.html:47
+#: goods/templates/goods/dosagepacking_confirm_delete.html:14
+#: goods/templates/goods/dosagepacking_detail.html:49
+#: goods/templates/goods/good_detail.html:49
+#: goods/templates/goods/maker_confirm_delete.html:14
+#: goods/templates/goods/maker_detail.html:45
+#: goods/templates/goods/originalpacking_confirm_delete.html:14
+#: goods/templates/goods/originalpacking_detail.html:49
+#: goods/templates/goods/packing_confirm_delete.html:14
+#: goods/templates/goods/packing_detail.html:45
+#: goods/templates/goods/pharmproduct_confirm_delete.html:14
+#: goods/templates/goods/tradename_confirm_delete.html:14
+#: goods/templates/goods/tradename_detail.html:45
+#: goods/templates/goods/unit_confirm_delete.html:14
+#: goods/templates/goods/unit_detail.html:45
+msgid "Delete"
+msgstr "Удалить"
+
+#: goods/templates/goods/catalog_confirm_delete.html:22
+#: goods/templates/goods/catalog_form.html:24
+#: goods/templates/goods/dosagepacking_confirm_delete.html:22
+#: goods/templates/goods/dosagepacking_form.html:24
+#: goods/templates/goods/maker_confirm_delete.html:22
+#: goods/templates/goods/maker_form.html:24
+#: goods/templates/goods/originalpacking_confirm_delete.html:22
+#: goods/templates/goods/originalpacking_form.html:24
+#: goods/templates/goods/packing_confirm_delete.html:22
+#: goods/templates/goods/packing_form.html:24
+#: goods/templates/goods/pharmproduct_confirm_delete.html:22
+#: goods/templates/goods/pharmproduct_form.html:24
+#: goods/templates/goods/tradename_confirm_delete.html:22
+#: goods/templates/goods/tradename_form.html:24
+#: goods/templates/goods/unit_confirm_delete.html:22
+#: goods/templates/goods/unit_form.html:24
+msgid "Form"
+msgstr "Форма"
+
+#: goods/templates/goods/catalog_confirm_delete.html:30
+#: goods/templates/goods/dosagepacking_confirm_delete.html:30
+#: goods/templates/goods/maker_confirm_delete.html:30
+#: goods/templates/goods/originalpacking_confirm_delete.html:30
+#: goods/templates/goods/packing_confirm_delete.html:30
+#: goods/templates/goods/pharmproduct_confirm_delete.html:30
+#: goods/templates/goods/tradename_confirm_delete.html:30
+#: goods/templates/goods/unit_confirm_delete.html:30
+msgid "Do you really want to delete this entry?"
+msgstr "Вы действительно хотите удалить эту запись?"
+
+#: goods/templates/goods/catalog_confirm_delete.html:34
+#: goods/templates/goods/dosagepacking_confirm_delete.html:34
+#: goods/templates/goods/maker_confirm_delete.html:34
+#: goods/templates/goods/originalpacking_confirm_delete.html:34
+#: goods/templates/goods/packing_confirm_delete.html:34
+#: goods/templates/goods/pharmproduct_confirm_delete.html:34
+#: goods/templates/goods/tradename_confirm_delete.html:34
+#: goods/templates/goods/unit_confirm_delete.html:34
+msgid "Yes"
+msgstr "Да"
+
+#: goods/templates/goods/catalog_confirm_delete.html:35
+#: goods/templates/goods/dosagepacking_confirm_delete.html:35
+#: goods/templates/goods/maker_confirm_delete.html:35
+#: goods/templates/goods/originalpacking_confirm_delete.html:35
+#: goods/templates/goods/packing_confirm_delete.html:35
+#: goods/templates/goods/pharmproduct_confirm_delete.html:35
+#: goods/templates/goods/tradename_confirm_delete.html:35
+#: goods/templates/goods/unit_confirm_delete.html:35
+msgid "No"
+msgstr "Нет"
+
+#: goods/templates/goods/catalog_detail.html:49
+#: goods/templates/goods/catalog_form.html:38
+#: goods/templates/goods/catalog_form.html:40
+#: goods/templates/goods/dosagepacking_detail.html:51
+#: goods/templates/goods/dosagepacking_form.html:38
+#: goods/templates/goods/dosagepacking_form.html:40
+#: goods/templates/goods/good_detail.html:51
+#: goods/templates/goods/maker_detail.html:47
+#: goods/templates/goods/maker_form.html:38
+#: goods/templates/goods/maker_form.html:40
+#: goods/templates/goods/originalpacking_detail.html:51
+#: goods/templates/goods/originalpacking_form.html:38
+#: goods/templates/goods/originalpacking_form.html:40
+#: goods/templates/goods/packing_detail.html:47
+#: goods/templates/goods/packing_form.html:38
+#: goods/templates/goods/packing_form.html:40
+#: goods/templates/goods/pharmproduct_form.html:38
+#: goods/templates/goods/pharmproduct_form.html:40
+#: goods/templates/goods/tradename_detail.html:47
+#: goods/templates/goods/tradename_form.html:38
+#: goods/templates/goods/tradename_form.html:40
+#: goods/templates/goods/unit_detail.html:47
+#: goods/templates/goods/unit_form.html:38
+#: goods/templates/goods/unit_form.html:40
+msgid "Cancel"
+msgstr "Отмена"
+
+#: goods/templates/goods/catalog_detail.html:51
+#: goods/templates/goods/dosagepacking_detail.html:53
+#: goods/templates/goods/good_detail.html:53
+#: goods/templates/goods/maker_detail.html:49
+#: goods/templates/goods/originalpacking_detail.html:53
+#: goods/templates/goods/packing_detail.html:49
+#: goods/templates/goods/tradename_detail.html:49
+#: goods/templates/goods/unit_detail.html:49
+msgid "Update"
+msgstr "Обновление"
+
+#: goods/templates/goods/catalog_form.html:5
+#: goods/templates/goods/dosagepacking_form.html:5
+#: goods/templates/goods/maker_form.html:5
+#: goods/templates/goods/originalpacking_form.html:5
+#: goods/templates/goods/packing_form.html:5
+#: goods/templates/goods/pharmproduct_form.html:5
+#: goods/templates/goods/tradename_form.html:5
+#: goods/templates/goods/unit_form.html:5
+msgid "Create"
+msgstr "Создать"
+
+#: goods/templates/goods/catalog_form.html:11
+#: goods/templates/goods/dosagepacking_form.html:11
+#: goods/templates/goods/maker_form.html:11
+#: goods/templates/goods/originalpacking_form.html:11
+#: goods/templates/goods/packing_form.html:11
+#: goods/templates/goods/pharmproduct_form.html:11
+#: goods/templates/goods/tradename_form.html:11
+#: goods/templates/goods/unit_form.html:11
+msgid "create"
+msgstr "создать"
+
+#: goods/templates/goods/catalog_form.html:35
+#: goods/templates/goods/dosagepacking_form.html:35
+#: goods/templates/goods/maker_form.html:35
+#: goods/templates/goods/originalpacking_form.html:35
+#: goods/templates/goods/packing_form.html:35
+#: goods/templates/goods/pharmproduct_form.html:35
+#: goods/templates/goods/tradename_form.html:35
+#: goods/templates/goods/unit_form.html:35
+msgid "Send"
+msgstr "Отправить"
+
+#: goods/templates/goods/catalog_list.html:5
+#: goods/templates/goods/catalog_list.html:11
+msgid "catalog"
+msgstr "каталог"
+
+#: goods/templates/goods/catalog_list.html:29
+#: goods/templates/goods/dosagepacking_list.html:29
+#: goods/templates/goods/good_list.html:29
+#: goods/templates/goods/maker_list.html:29
+#: goods/templates/goods/originalpacking_list.html:29
+#: goods/templates/goods/packing_list.html:29
+#: goods/templates/goods/tradename_list.html:29
+#: goods/templates/goods/unit_list.html:29
+msgid "Аdding a new entry"
+msgstr "Добавление новой записи"
+
+#: goods/templates/goods/catalog_list.html:30
+#: goods/templates/goods/dosagepacking_list.html:30
+#: goods/templates/goods/good_list.html:30
+#: goods/templates/goods/maker_list.html:30
+#: goods/templates/goods/originalpacking_list.html:30
+#: goods/templates/goods/packing_list.html:30
+#: goods/templates/goods/tradename_list.html:30
+#: goods/templates/goods/unit_list.html:30
+msgid "Add"
+msgstr "Добавить"
+
+#: goods/templates/goods/dosagepacking_detail.html:14
+#: goods/templates/goods/dosagepacking_form.html:15
+#: goods/templates/goods/dosagepacking_list.html:15
+#: goods/templates/goods/good_detail.html:32
+msgid "Dosage Packing"
+msgstr "Дозировка Упаковки"
+
+#: goods/templates/goods/dosagepacking_detail.html:28
+#: goods/templates/goods/dosagepacking_list.html:43
+#: goods/templates/goods/originalpacking_detail.html:28
+#: goods/templates/goods/originalpacking_list.html:43
+#: goods/templates/goods/packing_detail.html:14
+#: goods/templates/goods/packing_form.html:15
+#: goods/templates/goods/packing_list.html:15
+msgid "Packing"
+msgstr "Упаковка"
+
+#: goods/templates/goods/dosagepacking_detail.html:30
+#: goods/templates/goods/dosagepacking_list.html:45
+#: goods/templates/goods/originalpacking_detail.html:30
+#: goods/templates/goods/originalpacking_list.html:45
+msgid "Unit"
+msgstr "Единица"
+
+#: goods/templates/goods/dosagepacking_list.html:5
+#: goods/templates/goods/dosagepacking_list.html:11
+msgid "dosage packing"
+msgstr "дозировка упаковки"
+
+#: goods/templates/goods/good_detail.html:14
+msgid "Parm Product"
+msgstr "Фарм Продукт"
+
+#: goods/templates/goods/good_detail.html:29
+#: goods/templates/goods/tradename_detail.html:14
+#: goods/templates/goods/tradename_form.html:15
+#: goods/templates/goods/tradename_list.html:15
+msgid "Trade Name"
+msgstr "Торговое Название"
+
+#: goods/templates/goods/good_list.html:5
+#: goods/templates/goods/good_list.html:11
+msgid "pharm product"
+msgstr "фарм продукт"
+
+#: goods/templates/goods/good_list.html:15
+#: goods/templates/goods/pharmproduct_form.html:15
+msgid "Pharm Product"
+msgstr "Фарм Продукт"
+
+#: goods/templates/goods/good_list.html:43
+msgid "Full Name"
+msgstr "Полное Имя"
+
+#: goods/templates/goods/maker_list.html:5
+#: goods/templates/goods/maker_list.html:11
+msgid "maker"
+msgstr "производитель"
+
+#: goods/templates/goods/originalpacking_list.html:5
+#: goods/templates/goods/originalpacking_list.html:11
+msgid "original packing"
+msgstr "оригинальная упаковка"
+
+#: goods/templates/goods/packing_list.html:5
+#: goods/templates/goods/packing_list.html:11
+msgid "packing"
+msgstr "упаковка"
+
+#: goods/templates/goods/tradename_list.html:5
+#: goods/templates/goods/tradename_list.html:11
+msgid "trade name"
+msgstr "торговое название"
+
+#: goods/templates/goods/unit_detail.html:14
+#: goods/templates/goods/unit_list.html:15
+msgid "Units"
+msgstr "Единицы"
+
+#: goods/templates/goods/unit_form.html:15
+#: goods/templates/goods/unit_list.html:5
+msgid "units"
+msgstr "единицы"
+
+#: goods/templates/goods/unit_list.html:11
+msgid "unit"
+msgstr "единица"
+
+#~ msgid "Russian"
+#~ msgstr "Русский"
+
+#~ msgid "English"
+#~ msgstr "Английский"
+
+#~ msgid "Messages"
+#~ msgstr "Сообщения"
+
+#~ msgid "Site Maps"
+#~ msgstr "Карта Сайта"
+
+#~ msgid "Static Files"
+#~ msgstr "Статические Файлы"
+
+#~ msgid "Syndication"
+#~ msgstr "Объединение"
