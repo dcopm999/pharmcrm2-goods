@@ -7,28 +7,28 @@ factory.Faker._DEFAULT_LOCALE = "ru_RU"
 
 
 class TradeNameFactory(DjangoModelFactory):
-    name = factory.Faker("word")
+    name = factory.Sequence(lambda n: f"Название-{n}")
 
     class Meta:
         model = models.TradeName
 
 
 class MakerFactory(DjangoModelFactory):
-    name = factory.Faker("company")
+    name = factory.Sequence(lambda n: f"Производитель-{n}")
 
     class Meta:
         model = models.Maker
 
 
 class PackingFactory(DjangoModelFactory):
-    name = factory.Faker("word")
+    name = factory.Sequence(lambda n: f"Упаковка-{n}")
 
     class Meta:
         model = models.Packing
 
 
 class UnitFactory(DjangoModelFactory):
-    name = factory.Faker("word")
+    name = factory.Sequence(lambda n: f"Единицы-{n}")
 
     class Meta:
         model = models.Unit
