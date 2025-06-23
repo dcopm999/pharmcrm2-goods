@@ -53,5 +53,3 @@ output/*/index.html
 docs/_build
 docs/goods.api.rst
 docs/goods.migrations.rst
-docs/goods.rst
-docs/modules.rst
