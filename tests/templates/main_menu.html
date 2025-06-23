@@ -1,0 +1,61 @@
+{% load i18n static %}
+
+<li class="nav-item menu-open">
+  <a href="#" class="nav-link active">
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>
+      {% trans 'Goods' %}
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{% url 'goods:goods-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Goods' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:catalog-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Catalogs' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:maker-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Makers' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:tradename-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Trade Name' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:packing-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Packing' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:unit-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Units' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:originalpacking-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Original packing' %}</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'goods:dosagepacking-list' %}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{% trans 'Dosage packing' %}</p>
+      </a>
+    </li>
+  </ul>
+</li>

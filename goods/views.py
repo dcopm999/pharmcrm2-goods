@@ -251,7 +251,7 @@ class GoodCreateView(mixins.PermissionRequiredMixin, generic.CreateView):
     permission_required = "goods.add_good"
     model = models.Good
     form_class = forms.GoodForm
-    success_url = reverse_lazy("goods:good-list")
+    success_url = reverse_lazy("goods:goods-list")
 
 
 class GoodUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
@@ -260,10 +260,10 @@ class GoodUpdateView(mixins.PermissionRequiredMixin, generic.UpdateView):
     form_class = forms.GoodForm
 
     def get_success_url(self, *args, **kwargs):
-        return reverse_lazy("goods:good-detail", kwargs={"slug": self.object.slug})
+        return reverse_lazy("goods:goods-detail", kwargs={"slug": self.object.slug})
 
 
 class GoodDeleteView(mixins.PermissionRequiredMixin, generic.DeleteView):
     permission_required = "goods.delete_good"
     model = models.Good
-    success_url = reverse_lazy("goods:good-list")
+    success_url = reverse_lazy("goods:goods-list")

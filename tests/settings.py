@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "crispy_forms",
     "crispy_bootstrap4",
+    "sorl.thumbnail",
     "reversion",
     "goods",
     "mptt",
@@ -144,9 +145,14 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "tests", "static")]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "tests", "media")
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "GOODS",

@@ -7,7 +7,7 @@
 
 {% block crumbs %}
 {{ block.super }}
-<li class="breadcrumb-item"><a href="{% url 'goods:good-detail' object.slug %}">{{object.name}}</a></li>
+<li class="breadcrumb-item"><a href="{% url 'goods:goods-detail' object.slug %}">{{object.name}}</a></li>
 {% endblock crumbs %}
 
 {% block page_title %}
@@ -46,11 +46,11 @@
     <!-- /.card-body -->
     <div class="card-footer">
       {% if perms.goods.delete_good %}
-      <a type="button" href="{% url 'goods:good-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
+      <a type="button" href="{% url 'goods:goods-delete' object.slug %}" class="btn btn-default">{% trans 'Delete' %}</a>
       {% endif %}
-      <a type="button" href="{% url 'goods:good-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+      <a type="button" href="{% url 'goods:goods-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
       {% if perms.goods.change_good %}
-      <a type="button" href="{% url 'goods:good-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
+      <a type="button" href="{% url 'goods:goods-update' object.slug %}" class="btn btn-info float-right">{% trans 'Update' %}</a>
       {% endif %}
     </div>
     <!-- /.card-footer -->

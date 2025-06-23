@@ -4,4 +4,4 @@ include HISTORY.rst
 include LICENSE
 include README.rst
 include requirements.txt
-recursive-include goods *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
+recursive-include goods *.html *.png *.gif *js *.css *jpg *jpeg *svg *py goods/templates *.html

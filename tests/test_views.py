@@ -23,7 +23,7 @@ class HomeCase(TestCase):
         self.client.force_login(user=user_admin)
 
     def test_goods_home_accessible(self):
-        response = self.client.get(reverse("goods:home"))  # укажите нужный URL страницы
+        response = self.client.get(reverse("home"))  # укажите нужный URL страницы
         self.assertEqual(response.status_code, 200)  # проверяем, что страница доступна
 
 
@@ -201,7 +201,7 @@ class TradeNameCase(TestCase):
             response, reverse("goods:dosagepacking-detail", args=[test_query.slug])
         )
 
-    def test_good_update(self):
+    def test_goods_update(self):
         trade_name = models.TradeName.objects.create(name="product_trade_name2")
         maker = models.Maker.objects.last()
         original_packing = models.OriginalPacking.objects.last()
@@ -210,7 +210,7 @@ class TradeNameCase(TestCase):
         query = models.Good.objects.last()
 
         response = self.client.post(
-            reverse("goods:good-update", args=[query.slug]),
+            reverse("goods:goods-update", args=[query.slug]),
             {
                 "trade_name": trade_name.pk,
                 "maker": maker.pk,
@@ -221,5 +221,5 @@ class TradeNameCase(TestCase):
         )
         test_query = models.Good.objects.last()
         self.assertRedirects(
-            response, reverse("goods:good-detail", args=[test_query.slug])
+            response, reverse("goods:goods-detail", args=[test_query.slug])
         )

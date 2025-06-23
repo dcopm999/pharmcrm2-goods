@@ -1,4 +1,4 @@
-{% extends 'goods/pharmproduct_list.html' %}
+{% extends 'goods/good_list.html' %}
 {% load i18n crispy_forms_tags %}
 
 {% block title %}
@@ -8,7 +8,7 @@
 
 {% block crumbs %}
 {{ block.super }}
-<li class="breadcrumb-item"><a href="{% url 'goods:pharmproduct-create' %}">{% trans 'create' %}</a></li>
+<li class="breadcrumb-item"><a href="{% url 'goods:goods-create' %}">{% trans 'create' %}</a></li>
 {% endblock crumbs %}
 
 {% block page_title %}
@@ -33,11 +33,11 @@
       <!-- /.card-body -->
       <div class="card-footer">
 	<button type="submit" class="btn btn-info">{% trans 'Send' %}</button>
-	{% url 'goods:pharmproduct-create' as urlcreate %}
+	{% url 'goods:goods-create' as urlcreate %}
 	{% if request.path_info == urlcreate %}
-	<a type="button" href="{% url 'goods:pharmproduct-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+	<a type="button" href="{% url 'goods:goods-list' %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
 	{% else %}
-	<a type="button" href="{% url 'goods:pharmproduct-detail' object.slug %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
+	<a type="button" href="{% url 'goods:goods-detail' object.slug %}" class="btn btn-default float-right">{% trans 'Cancel' %}</a>
 	{% endif %}
       </div>
       <!-- /.card-footer -->
