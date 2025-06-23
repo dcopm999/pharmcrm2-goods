@@ -21,6 +21,11 @@ import sys, os
 cwd = os.getcwd()
 parent = os.path.dirname(cwd)
 sys.path.append(parent)
+# Укажите настройки Django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tests.settings')
+# Импортируйте Django и инициализируйте его
+import django
+django.setup()
 
 import goods
 
@@ -31,7 +36,11 @@ import goods
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinxcontrib_django',
+    'sphinx.ext.viewcode'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -100,7 +109,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -252,3 +261,8 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# Опционально: включите отображение таблиц базы данных в моделях
+django_show_db_tables = True
+# Опционально: укажите настройки проекта
+django_settings = 'tests.settings'
