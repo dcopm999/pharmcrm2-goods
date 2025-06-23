@@ -53,7 +53,7 @@ def docs(c):
     c.run("sphinx-apidoc -o docs/ goods")
 
     c.run("sphinx-build -E -b html docs docs/_build")
-    open_browser(path="docs/_build/html/index.html")
+    open_browser(path="docs/_build/index.html")
 
 
 @task

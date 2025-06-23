@@ -5,6 +5,7 @@ __pycache__
 db.sqlite3
 thumbnails/
 static/
+tests/media/cache/
 
 # C extensions
 *.so
@@ -50,3 +51,7 @@ output/*/index.html
 
 # Sphinx
 docs/_build
+docs/goods.api.rst
+docs/goods.migrations.rst
+docs/goods.rst
+docs/modules.rst
