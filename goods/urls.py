@@ -6,7 +6,6 @@ from goods import views
 app_name = "goods"
 
 urlpatterns = [
-    path("", views.HomeView.as_view(), name="home"),
     path("tradename/list/", views.TradeNameListView.as_view(), name="tradename-list"),
     path(
         "tradename/detail/<slug:slug>/",
@@ -143,26 +142,26 @@ urlpatterns = [
     path(
         "good/list/",
         views.GoodListView.as_view(),
-        name="good-list",
+        name="goods-list",
     ),
     path(
         "good/detail/<slug:slug>/",
         views.GoodDetailView.as_view(),
-        name="good-detail",
+        name="goods-detail",
     ),
     path(
         "good/create/",
         views.GoodCreateView.as_view(),
-        name="good-create",
+        name="goods-create",
     ),
     path(
         "good/update/<slug:slug>/",
         views.GoodUpdateView.as_view(),
-        name="good-update",
+        name="goods-update",
     ),
     path(
         "good/delete/<slug:slug>/",
         views.GoodDeleteView.as_view(),
-        name="good-delete",
+        name="goods-delete",
     ),
 ]

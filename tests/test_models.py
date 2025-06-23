@@ -200,7 +200,7 @@ class GoodModelCase(TestCase):
     def test_good_absolute_url(self):
         self.assertEqual(
             self.query.get_absolute_url(),
-            reverse("goods:good-detail", args=[str(self.query.slug)]),
+            reverse("goods:goods-detail", args=[str(self.query.slug)]),
         )
 
     def test_good_str(self):

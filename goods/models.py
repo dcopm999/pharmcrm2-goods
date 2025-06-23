@@ -235,7 +235,7 @@ class Good(models.Model):
         verbose_name_plural = _("Pharmaceutical goods")
 
     def get_absolute_url(self):
-        return reverse("goods:good-detail", args=[str(self.slug)])
+        return reverse("goods:goods-detail", args=[str(self.slug)])
 
     def __str__(self):
         result = f"{self.maker.name}: {self.trade_name.name}"
